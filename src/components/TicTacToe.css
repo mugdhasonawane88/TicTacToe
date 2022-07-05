@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  border: 1px solid black;
+}
+
+.col {
+  display: flex;
+}
+
+.cell {
+  width: 90px;
+  height: 90px;
+  border: 1px solid gray;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
