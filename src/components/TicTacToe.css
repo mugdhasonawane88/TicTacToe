@@ -16,4 +16,15 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.replay_button{
+  text-align: center;
+  width: auto;
+  background-color: red;
+  color: #000000;
+  margin: 5px;
+  cursor: pointer;
+  padding: 8px;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './TicTacToe.css';
+import { Constants } from '../constants/Constants';
 
 function TicTacToe() {
 
@@ -8,10 +9,17 @@ function TicTacToe() {
     ["", "", ""],
     ["", "", ""],
   ]);
-  console.log('board',typeof(board[1][0]));
 
   const playerOneFn = () => {
 
+  }
+
+  const rePlayFn = () => {
+    setBoard([
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+    ]);
   }
 
   return (
@@ -51,6 +59,9 @@ function TicTacToe() {
           </span>
         </div>
       </div>
+      <button className="replay_button" onClick={rePlayFn}>
+        {Constants.REPLAY}
+      </button>
     </div>
   );
 }
