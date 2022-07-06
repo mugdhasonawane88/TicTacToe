@@ -11,37 +11,37 @@ function TicTacToe() {
     ["", "", ""],
     ["", "", ""],
   ]);
-  const [isCPUNext, setIsCPUNext] = useState(false);
+  const [isPlayerTwoNext, setIsPlayerTwoNext] = useState(false);
   const [winner, setWinner] = useState(null);
 
-  const playerOneFn = (arrayIndex, index) =>{
-    if (isCPUNext) return;
+  const playerOneFn = (row, cell) =>{
+    if (isPlayerTwoNext) return;
     if (winner) return;
-    board[arrayIndex][index] = Players?.HUMAN?.SYM;
+    board[row][cell] = Players?.PLAYER_ONE?.SYM;
     setBoard((board) => [...board]);
     checkWinner();
     sleep(1000);
-    setIsCPUNext(true);
+    setIsPlayerTwoNext(true);
   }
 
   useEffect(() => {
     if (winner) return;
-    if (isCPUNext) {
-      cPUPlay();
+    if (isPlayerTwoNext) {
+      playerTwoFn();
     }
-  }, [isCPUNext]);
+  }, [isPlayerTwoNext]);
 
-  const cPUPlay = () => {
+  const playerTwoFn = () => {
     if (winner) return;
     sleep(1000);
-    const cPUMove = getCPUTurn();
-    board[cPUMove.arrayIndex][cPUMove.index] = Players?.CPU?.SYM;
+    const playerTwoMove = getPlayerTwoTurn();
+    board[playerTwoMove.arrayIndex][playerTwoMove.index] = Players?.PLAYER_TWO?.SYM;
     setBoard((board) => [...board]);
     checkWinner();
-    setIsCPUNext(false);
+    setIsPlayerTwoNext(false);
   }
 
-  const getCPUTurn = () => {
+  const getPlayerTwoTurn = () => {
     const emptyIndexes = [];
     board.forEach((row, arrayIndex) => {
       row.forEach((cell, index) => {
@@ -58,11 +58,11 @@ function TicTacToe() {
     // check same row
     for (let index = 0; index < board.length; index++) {
       const row = board[index];
-      if (row.every((cell) => cell === Players?.CPU?.SYM)) {
-        setWinner(Players?.CPU?.NAME);
+      if (row.every((cell) => cell === Players?.PLAYER_TWO?.SYM)) {
+        setWinner(Players?.PLAYER_TWO?.NAME);
         return;
-      } else if (row.every((cell) => cell === Players?.HUMAN?.SYM)) {
-        setWinner(Players?.HUMAN?.NAME);
+      } else if (row.every((cell) => cell === Players?.PLAYER_ONE?.SYM)) {
+        setWinner(Players?.PLAYER_ONE?.NAME);
         return;
       }
     }
@@ -70,11 +70,11 @@ function TicTacToe() {
     // check same column
     for (let i = 0; i < 3; i++) {
       const column = board.map((row) => row[i]);
-      if (column.every((cell) => cell === Players?.CPU?.SYM)) {
-        setWinner(Players?.CPU?.NAME);
+      if (column.every((cell) => cell === Players?.PLAYER_TWO?.SYM)) {
+        setWinner(Players?.PLAYER_TWO?.NAME);
         return;
-      } else if (column.every((cell) => cell === Players?.HUMAN?.SYM)) {
-        setWinner(Players?.HUMAN?.NAME);
+      } else if (column.every((cell) => cell === Players?.PLAYER_ONE?.SYM)) {
+        setWinner(Players?.PLAYER_ONE?.NAME);
         return;
       }
     }
@@ -82,17 +82,17 @@ function TicTacToe() {
     // check same diagonal
     const diagonal1 = [board[0][0], board[1][1], board[2][2]];
     const diagonal2 = [board[0][2], board[1][1], board[2][0]];
-    if (diagonal1.every((cell) => cell === Players?.CPU?.SYM)) {
-      setWinner(Players?.CPU?.NAME);
+    if (diagonal1.every((cell) => cell === Players?.PLAYER_TWO?.SYM)) {
+      setWinner(Players?.PLAYER_TWO?.NAME);
       return;
-    } else if (diagonal1.every((cell) => cell === Players?.HUMAN?.SYM)) {
-      setWinner(Players?.HUMAN?.NAME);
+    } else if (diagonal1.every((cell) => cell === Players?.PLAYER_ONE?.SYM)) {
+      setWinner(Players?.PLAYER_ONE?.NAME);
       return;
-    } else if (diagonal2.every((cell) => cell === Players?.CPU?.SYM)) {
-      setWinner(Players?.CPU?.NAME);
+    } else if (diagonal2.every((cell) => cell === Players?.PLAYER_TWO?.SYM)) {
+      setWinner(Players?.PLAYER_TWO?.NAME);
       return;
-    } else if (diagonal2.every((cell) => cell === Players?.HUMAN?.SYM)) {
-      setWinner(Players?.HUMAN?.NAME);
+    } else if (diagonal2.every((cell) => cell === Players?.PLAYER_ONE?.SYM)) {
+      setWinner(Players?.PLAYER_ONE?.NAME);
       return;
     } else if (board.flat().every((cell) => cell !== "")) {
       setWinner("draw");
@@ -114,10 +114,10 @@ function TicTacToe() {
 
   // display player name
   const displayTurn = () => {
-    if (isCPUNext) {
-      return "CPU's turn";
+    if (isPlayerTwoNext) {
+      return "Player Two's turn";
     } else {
-      return "Your turn";
+      return "Player One's turn";
     }
   }
 
@@ -129,7 +129,7 @@ function TicTacToe() {
       ["", "", ""],
     ]);
     setWinner(null);
-    setIsCPUNext(false);
+    setIsPlayerTwoNext(false);
   }
 
   return (

@@ -82,7 +82,7 @@ describe('ticTacToe component', ()=>{
     (cell_7).innerText="";
     (cell_8).innerText="X";
 
-    expect((winnerTxt).textContent).toBe("You won!");
+    expect((winnerTxt).textContent).toBe("Player One won!");
     expect(winnerTxt).toBeVisible();
   });
 })

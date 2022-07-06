@@ -4,12 +4,12 @@ export const Constants = {
 };
 
 export const Players = {
-    CPU: {
-        SYM: "O",
-        NAME: "CPU",
-    },
-    HUMAN: {
+    PLAYER_ONE: {
         SYM: "X",
-        NAME: "You",
+        NAME: "Player One",
     },
+    PLAYER_TWO: {
+        SYM: "O",
+        NAME: "Player Two",
+    }
 };
