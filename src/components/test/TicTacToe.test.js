@@ -3,12 +3,12 @@ import TicTacToe from '../TicTacToe';
 
 describe('ticTacToe component', ()=>{
 
-  test('should render ticTacToe component', () => {
+  test('Should render ticTacToe component', () => {
     const {asFragment} = render(<TicTacToe />);
     expect(asFragment).toBeDefined();
   });
 
-  test('should create empty board when game start', () => {
+  test('Should create empty board when game start', () => {
     const {asFragment} = render(<TicTacToe />);
     const top_left_tile = screen.queryAllByRole('cell')[0];
     const top_middle_tile = screen.queryAllByRole('cell')[1];
@@ -30,12 +30,12 @@ describe('ticTacToe component', ()=>{
     expect((bottom_right_tile).textContent).toBe("");
   });
 
-  test('should have nine nmuber of cell ', () => {
+  test('Should have nine nmuber of cell ', () => {
     const {asFragment} = render(<TicTacToe />);
     expect(screen.queryAllByRole('cell')).toHaveLength(9);
   });
 
-  test('should clear all cell content onClick of Replay button ', () => {
+  test('Should clear all cell content onClick of Replay button ', () => {
     const {asFragment} = render(<TicTacToe />);
     const replayBtn = screen.getByRole('button', {name: 'Replay'});
     fireEvent.click(replayBtn);
@@ -65,8 +65,22 @@ describe('ticTacToe component', ()=>{
     fireEvent.click(replayBtn);
 
     const top_left_tile = screen.queryAllByRole('cell')[0];
-    fireEvent.click(cell_0);
+    fireEvent.click(top_left_tile);
     expect((top_left_tile).textContent).toEqual("X");
+  });
+
+  test('Should draw O on second click', () => {
+    const {asFragment} = render(<TicTacToe />);
+    const replayBtn = screen.getByRole('button', {name: 'Replay'});
+    fireEvent.click(replayBtn);
+
+    const top_left_tile = screen.queryAllByRole('cell')[0];
+    fireEvent.click(top_left_tile);
+    expect((top_left_tile).textContent).toEqual("X");
+
+    const top_middle_tile = screen.queryAllByRole('cell')[1];
+    fireEvent.click(top_middle_tile);
+    expect((top_middle_tile).textContent).toEqual("O");
   });
 
   test('Turn details should be present in document', () => {
