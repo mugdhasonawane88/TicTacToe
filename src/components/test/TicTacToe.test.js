@@ -58,5 +58,32 @@ describe('ticTacToe component', ()=>{
     expect((cell_7).textContent).toBe("");
     expect((cell_8).textContent).toBe("");
   });
+
+  test('Should display winner name', () => {
+    const {asFragment} = render(<TicTacToe />);
+    const replayBtn = screen.getByRole('button', {name: 'Replay'});
+    const winnerTxt = screen.getByTestId('winner');
+    const cell_0 = screen.queryAllByRole('cell')[0];
+    const cell_1 = screen.queryAllByRole('cell')[1];
+    const cell_2 = screen.queryAllByRole('cell')[2];
+    const cell_3 = screen.queryAllByRole('cell')[3];
+    const cell_4 = screen.queryAllByRole('cell')[4];
+    const cell_5 = screen.queryAllByRole('cell')[5];
+    const cell_6 = screen.queryAllByRole('cell')[6];
+    const cell_7 = screen.queryAllByRole('cell')[7];
+    const cell_8 = screen.queryAllByRole('cell')[8];
+    (cell_0).innerText="X";
+    (cell_1).innerText="O";
+    (cell_2).innerText="";
+    (cell_3).innerText="";
+    (cell_4).innerText="X";
+    (cell_5).innerText="";
+    (cell_6).innerText="O";
+    (cell_7).innerText="";
+    (cell_8).innerText="X";
+
+    expect((winnerTxt).textContent).toBe("You won!");
+    expect(winnerTxt).toBeVisible();
+  });
 })
 

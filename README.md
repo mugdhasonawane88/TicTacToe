@@ -20,37 +20,6 @@ To get the application running locally:
 
 -   Clone this repo and open in your favourite IDE
 
-If you are using Yarn package manager follow the below commands in your terminal
-
-### `yarn install`  
-
-    Installs all required dependencies to the project
-
-### `yarn start`
-
-    Runs the app in the development mode.
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-    The page will reload if you make edits.
-    You will also see any lint errors in the console.
-
-### `yarn test`
-
-    Runs the test runner and generates coverage report to the 'coverage' folder.
-    Open the 'index.html' file in location '/coverage/lcov-report/' for generated coverage report.
-    
-### `stryker run`
-
-    Runs the mutation test runner and generates test report to the 'reports' folder.
-    Open the 'index.html' file in location '/reports/mutation/html/' for generated mutation test report.
-
-### `yarn build`
-
-    Builds the app for production to the `build` folder.
-    It correctly bundles React in production mode and optimizes the build for the best performance.
-
-    The build is minified and the filenames include the hashes.
-    Your app is ready to be deployed!
 
 If you are using npm package manager follow the below commands in your terminal
 
