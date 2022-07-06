@@ -10,22 +10,38 @@ function TicTacToe() {
     ["", "", ""],
     ["", "", ""],
   ]);
+  const [isCPUNext, setIsCPUNext] = useState(false);
+  const [winner, setWinner] = useState(null);
+
+  // display winner name
+  const displayWinner = () => {
+
+  }
+
+  // display player name
+  const displayTurn = () => {
+
+  }
 
   const playerOneFn = () => {
 
   }
 
+  //Play again
   const rePlayFn = () => {
     setBoard([
       ["", "", ""],
       ["", "", ""],
       ["", "", ""],
     ]);
+    setWinner(null);
+    setIsCPUNext(false);
   }
 
   return (
     <div className="tictactoe">
-       <div className="container">
+      <div>{!winner && displayTurn()}</div>
+      <div className="container">
         {
           board && board.map((row, j) => {
             return (<div key={j} className="col">
@@ -38,6 +54,7 @@ function TicTacToe() {
           })
         }
       </div>
+      <h2 data-testid="winner">{displayWinner()}</h2>
       <button className="replay_button" onClick={rePlayFn}>
         {Constants.REPLAY}
       </button>
