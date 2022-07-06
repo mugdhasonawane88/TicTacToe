@@ -8,26 +8,26 @@ describe('ticTacToe component', ()=>{
     expect(asFragment).toBeDefined();
   });
 
-  test('should create board with initial cell empty', () => {
+  test('should create empty board when game start', () => {
     const {asFragment} = render(<TicTacToe />);
-    const cell_0 = screen.queryAllByRole('cell')[0];
-    const cell_1 = screen.queryAllByRole('cell')[1];
-    const cell_2 = screen.queryAllByRole('cell')[2];
-    const cell_3 = screen.queryAllByRole('cell')[3];
-    const cell_4 = screen.queryAllByRole('cell')[4];
-    const cell_5 = screen.queryAllByRole('cell')[5];
-    const cell_6 = screen.queryAllByRole('cell')[6];
-    const cell_7 = screen.queryAllByRole('cell')[7];
-    const cell_8 = screen.queryAllByRole('cell')[8];
-    expect((cell_0).textContent).toBe("");
-    expect((cell_1).textContent).toBe("");
-    expect((cell_2).textContent).toBe("");
-    expect((cell_3).textContent).toBe("");
-    expect((cell_4).textContent).toBe("");
-    expect((cell_5).textContent).toBe("");
-    expect((cell_6).textContent).toBe("");
-    expect((cell_7).textContent).toBe("");
-    expect((cell_8).textContent).toBe("");
+    const top_left_tile = screen.queryAllByRole('cell')[0];
+    const top_middle_tile = screen.queryAllByRole('cell')[1];
+    const top_right_tile = screen.queryAllByRole('cell')[2];
+    const center_left_tile = screen.queryAllByRole('cell')[3];
+    const center_middle_tile = screen.queryAllByRole('cell')[4];
+    const center_right_tile = screen.queryAllByRole('cell')[5];
+    const bottom_left_tile = screen.queryAllByRole('cell')[6];
+    const bottom_middle_tile = screen.queryAllByRole('cell')[7];
+    const bottom_right_tile = screen.queryAllByRole('cell')[8];
+    expect((top_left_tile).textContent).toBe("");
+    expect((top_middle_tile).textContent).toBe("");
+    expect((top_right_tile).textContent).toBe("");
+    expect((center_left_tile).textContent).toBe("");
+    expect((center_middle_tile).textContent).toBe("");
+    expect((center_right_tile).textContent).toBe("");
+    expect((bottom_left_tile).textContent).toBe("");
+    expect((bottom_middle_tile).textContent).toBe("");
+    expect((bottom_right_tile).textContent).toBe("");
   });
 
   test('should have nine nmuber of cell ', () => {
@@ -39,48 +39,64 @@ describe('ticTacToe component', ()=>{
     const {asFragment} = render(<TicTacToe />);
     const replayBtn = screen.getByRole('button', {name: 'Replay'});
     fireEvent.click(replayBtn);
-    const cell_0 = screen.queryAllByRole('cell')[0];
-    const cell_1 = screen.queryAllByRole('cell')[1];
-    const cell_2 = screen.queryAllByRole('cell')[2];
-    const cell_3 = screen.queryAllByRole('cell')[3];
-    const cell_4 = screen.queryAllByRole('cell')[4];
-    const cell_5 = screen.queryAllByRole('cell')[5];
-    const cell_6 = screen.queryAllByRole('cell')[6];
-    const cell_7 = screen.queryAllByRole('cell')[7];
-    const cell_8 = screen.queryAllByRole('cell')[8];
-    expect((cell_0).textContent).toBe("");
-    expect((cell_1).textContent).toBe("");
-    expect((cell_2).textContent).toBe("");
-    expect((cell_3).textContent).toBe("");
-    expect((cell_4).textContent).toBe("");
-    expect((cell_5).textContent).toBe("");
-    expect((cell_6).textContent).toBe("");
-    expect((cell_7).textContent).toBe("");
-    expect((cell_8).textContent).toBe("");
+    const top_left_tile = screen.queryAllByRole('cell')[0];
+    const top_middle_tile = screen.queryAllByRole('cell')[1];
+    const top_right_tile = screen.queryAllByRole('cell')[2];
+    const center_left_tile = screen.queryAllByRole('cell')[3];
+    const center_middle_tile = screen.queryAllByRole('cell')[4];
+    const center_right_tile = screen.queryAllByRole('cell')[5];
+    const bottom_left_tile = screen.queryAllByRole('cell')[6];
+    const bottom_middle_tile = screen.queryAllByRole('cell')[7];
+    const bottom_right_tile = screen.queryAllByRole('cell')[8];
+    expect((top_left_tile).textContent).toBe("");
+    expect((top_middle_tile).textContent).toBe("");
+    expect((top_right_tile).textContent).toBe("");
+    expect((center_left_tile).textContent).toBe("");
+    expect((center_middle_tile).textContent).toBe("");
+    expect((center_right_tile).textContent).toBe("");
+    expect((bottom_left_tile).textContent).toBe("");
+    expect((bottom_middle_tile).textContent).toBe("");
+    expect((bottom_right_tile).textContent).toBe("");
+  });
+
+  test('Should draw X on first click', () => {
+    const {asFragment} = render(<TicTacToe />);
+    const replayBtn = screen.getByRole('button', {name: 'Replay'});
+    fireEvent.click(replayBtn);
+
+    const top_left_tile = screen.queryAllByRole('cell')[0];
+    fireEvent.click(cell_0);
+    expect((top_left_tile).textContent).toEqual("X");
+  });
+
+  test('Turn details should be present in document', () => {
+    const {asFragment} = render(<TicTacToe />);
+    expect(screen.getByTestId('turn-detail')).toBeInTheDocument();
+  });
+
+  test('Winner details should be present in document', () => {
+    const {asFragment} = render(<TicTacToe />);
+    expect(screen.getByTestId('winner')).toBeInTheDocument();
   });
 
   test('Should display winner name', () => {
     const {asFragment} = render(<TicTacToe />);
     const replayBtn = screen.getByRole('button', {name: 'Replay'});
     const winnerTxt = screen.getByTestId('winner');
-    const cell_0 = screen.queryAllByRole('cell')[0];
-    const cell_1 = screen.queryAllByRole('cell')[1];
-    const cell_2 = screen.queryAllByRole('cell')[2];
-    const cell_3 = screen.queryAllByRole('cell')[3];
-    const cell_4 = screen.queryAllByRole('cell')[4];
-    const cell_5 = screen.queryAllByRole('cell')[5];
-    const cell_6 = screen.queryAllByRole('cell')[6];
-    const cell_7 = screen.queryAllByRole('cell')[7];
-    const cell_8 = screen.queryAllByRole('cell')[8];
-    (cell_0).innerText="X";
-    (cell_1).innerText="O";
-    (cell_2).innerText="";
-    (cell_3).innerText="";
-    (cell_4).innerText="X";
-    (cell_5).innerText="";
-    (cell_6).innerText="O";
-    (cell_7).innerText="";
-    (cell_8).innerText="X";
+    const top_left_tile = screen.queryAllByRole('cell')[0];
+    const top_middle_tile = screen.queryAllByRole('cell')[1];
+    const top_right_tile = screen.queryAllByRole('cell')[2];
+    const center_left_tile = screen.queryAllByRole('cell')[3];
+    const center_middle_tile = screen.queryAllByRole('cell')[4];
+    const center_right_tile = screen.queryAllByRole('cell')[5];
+    const bottom_left_tile = screen.queryAllByRole('cell')[6];
+    const bottom_middle_tile = screen.queryAllByRole('cell')[7];
+    const bottom_right_tile = screen.queryAllByRole('cell')[8];
+    fireEvent.click(top_left_tile);
+    fireEvent.click(center_left_tile);
+    fireEvent.click(top_middle_tile);
+    fireEvent.click(center_middle_tile);
+    fireEvent.click(top_right_tile);
 
     expect((winnerTxt).textContent).toBe("Player One won!");
     expect(winnerTxt).toBeVisible();

@@ -6,4 +6,9 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  line-height: 90px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
 }
+

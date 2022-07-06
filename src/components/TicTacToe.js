@@ -134,7 +134,7 @@ function TicTacToe() {
 
   return (
     <div className="tictactoe">
-      <div>{!winner && displayTurn()}</div>
+      <div data-testid="turn-detail">{!winner && displayTurn()}</div>
       <div className="container">
         {
           board && board.map((row, j) => {
